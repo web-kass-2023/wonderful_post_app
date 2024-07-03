@@ -54,8 +54,8 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    @article.destroy!
-    edirect_to articles_url, notice: "Article was successfully destroyed."
+    @article.destroy
+    redirect_to articles_url, notice: "Article was successfully destroyed."
   end
 
   private
