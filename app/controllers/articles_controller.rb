@@ -45,11 +45,11 @@ class ArticlesController < ApplicationController
   end
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
-    # 対象のレコードを探す
-    # 探してきたレコードに対して変更を行う
-    @article.update!(article_params)
-    # json として値を返す
-    render :show
+    if @article.update(article_params)
+      redirect_to @article, notice: "Article was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # DELETE /articles/1 or /articles/1.json
