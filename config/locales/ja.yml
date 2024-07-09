@@ -18,3 +18,10 @@ ja:
         notice: "%{resource}が正常に更新されました。"
       destroy:
         notice: "%{resource}が正常に削除されました。"
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
