@@ -14,20 +14,19 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def create
-    @article = current_user.articles.new(article_params) # 追加
-
-
-    if @article.save
-      redirect_to @article, notice: "#{t('activerecord.models.article')}を作成しました。"
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+  # def create
+  #   @article = current_user.articles.new(article_params) # 追加
+  #   if @article.save
+  #     redirect_to @article, notice: "#{t('activerecord.models.article')}を作成しました。"
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
 
 
   # GET /articles/new
   def new
+
     @article = Article.new
   end
 
@@ -35,15 +34,17 @@ class ArticlesController < ApplicationController
   def edit
   end
 
-  # POST /articles or /articles.json
+  # POST /articles
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.new(article_params)
     if @article.save
-      redirect_to @article, notice: "記事が正常に作成されました。"
+      redirect_to @article, notice: "Article was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
+
+
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
     if @article.update(article_params)
